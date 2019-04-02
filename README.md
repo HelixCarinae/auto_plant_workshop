@@ -5,6 +5,21 @@
 ### Description:
 - The goal of this workshop is to create a fully automated plant capable of taking care of itself as long as it's plugged in and there's water in a reservoir.
 
+### To Do:
+- Create schematic
+- Create build guide
+- Link to editable fusion 360 files
+- Create and post revised design
+-
+- Potential Revisions:
+  - Might have to replace the 2n2222a for the pump with an AO3400 or other MOSFET
+  - Add pull-up resistors for transistor/MOSFET
+  - Add reverse current diode for pump [probably not too important]
+  - Add smoothing capacitor for pump
+  - Potentially add current limiting / pullup resistor for pump
+  - Modify tolerances for LED Holder and the Arm
+  - Modify the electronics holder so the fit better, add holder for perfboard
+
 
 ### Materials:
 - 1 x Arduino Nano
@@ -26,4 +41,4 @@
 - 1 x Mini USB cable to upload the code and power the Nano
 
 
-### Building Instructions: 
+### Building Instructions:
