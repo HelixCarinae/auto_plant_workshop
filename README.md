@@ -5,6 +5,8 @@
 ### Description:
 - The goal of this workshop is to create a fully automated plant capable of taking care of itself as long as it's plugged in and there's water in a reservoir.
 
+![](./3D_render.jpg)
+
 ### To Do:
 - Create schematic
 - Create build guide
