@@ -1,0 +1,171 @@
+EESchema Schematic File Version 4
+LIBS:automated_plant_schematic-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:Arduino_Nano_v3.x A?
+U 1 1 5CA393F6
+P 2500 3700
+F 0 "A?" H 2500 2614 50  0000 C CNN
+F 1 "Arduino_Nano_v3.x" H 2500 2523 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 2650 2750 50  0001 L CNN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 2500 2700 50  0001 C CNN
+	1    2500 3700
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5900 3900
+$Comp
+L Transistor_BJT:2N2219 Q?
+U 1 1 5CA394E1
+P 5500 3300
+F 0 "Q?" H 5691 3346 50  0000 L CNN
+F 1 "2N2219" H 5691 3255 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-39-3" H 5700 3225 50  0001 L CIN
+F 3 "http://www.onsemi.com/pub_link/Collateral/2N2219-D.PDF" H 5500 3300 50  0001 L CNN
+	1    5500 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor:Motor_DC M?
+U 1 1 5CA39A06
+P 7600 3900
+F 0 "M?" H 7758 3896 50  0000 L CNN
+F 1 "Motor_DC" H 7758 3805 50  0000 L CNN
+F 2 "" H 7600 3810 50  0001 C CNN
+F 3 "~" H 7600 3810 50  0001 C CNN
+	1    7600 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 5CA39BE9
+P 7200 2900
+F 0 "D?" H 7192 2645 50  0001 C CNN
+F 1 "Grow LED 2" H 7192 2736 50  0000 C CNN
+F 2 "" H 7200 2900 50  0001 C CNN
+F 3 "~" H 7200 2900 50  0001 C CNN
+	1    7200 2900
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 5CA39C7B
+P 7200 3300
+F 0 "D?" H 7192 3045 50  0001 C CNN
+F 1 "Grow LED 3" H 7192 3136 50  0000 C CNN
+F 2 "" H 7200 3300 50  0001 C CNN
+F 3 "~" H 7200 3300 50  0001 C CNN
+	1    7200 3300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 5CA39C9C
+P 7200 2500
+F 0 "D?" H 7192 2245 50  0001 C CNN
+F 1 "Grow LED 1" H 7192 2336 50  0000 C CNN
+F 2 "" H 7200 2500 50  0001 C CNN
+F 3 "~" H 7200 2500 50  0001 C CNN
+	1    7200 2500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7600 2500 7550 2500
+Connection ~ 7350 2500
+Wire Wire Line
+	7350 2500 7300 2500
+Wire Wire Line
+	7300 2900 7350 2900
+Connection ~ 7350 2900
+Wire Wire Line
+	7300 3300 7350 3300
+Connection ~ 7350 3300
+$Comp
+L Device:R_US R1
+U 1 1 5CA3A361
+P 7700 2500
+F 0 "R1" V 7495 2500 50  0000 C CNN
+F 1 "100 ohm" V 7586 2500 50  0000 C CNN
+F 2 "" V 7740 2490 50  0001 C CNN
+F 3 "~" H 7700 2500 50  0001 C CNN
+	1    7700 2500
+	0    1    1    0   
+$EndComp
+Connection ~ 7550 2500
+Wire Wire Line
+	7550 2500 7350 2500
+$Comp
+L Device:R_US R2
+U 1 1 5CA3D90B
+P 7700 2900
+F 0 "R2" V 7495 2900 50  0000 C CNN
+F 1 "100 ohm" V 7586 2900 50  0000 C CNN
+F 2 "" V 7740 2890 50  0001 C CNN
+F 3 "~" H 7700 2900 50  0001 C CNN
+	1    7700 2900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7350 2900 7600 2900
+$Comp
+L Device:R_US R3
+U 1 1 5CA3D9BD
+P 7700 3300
+F 0 "R3" V 7495 3300 50  0000 C CNN
+F 1 "100 ohm" V 7586 3300 50  0000 C CNN
+F 2 "" V 7740 3290 50  0001 C CNN
+F 3 "~" H 7700 3300 50  0001 C CNN
+	1    7700 3300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7350 3300 7550 3300
+Wire Wire Line
+	8100 2500 8100 2900
+Wire Wire Line
+	8100 2900 7850 2900
+Wire Wire Line
+	7800 2500 7850 2500
+Connection ~ 7850 2500
+Wire Wire Line
+	7850 2500 8100 2500
+Connection ~ 7850 2900
+Wire Wire Line
+	7850 2900 7800 2900
+Wire Wire Line
+	7800 3300 7850 3300
+Wire Wire Line
+	8100 3300 8100 2900
+Connection ~ 7850 3300
+Wire Wire Line
+	7850 3300 8100 3300
+Connection ~ 8100 2900
+Wire Wire Line
+	8100 2900 8300 2900
+$Comp
+L power:GND #PWR?
+U 1 1 5CA3DE86
+P 8300 2900
+F 0 "#PWR?" H 8300 2650 50  0001 C CNN
+F 1 "GND" V 8305 2772 50  0000 R CNN
+F 2 "" H 8300 2900 50  0001 C CNN
+F 3 "" H 8300 2900 50  0001 C CNN
+	1    8300 2900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 7550 3300
+Wire Wire Line
+	7550 3300 7600 3300
+$EndSCHEMATC
