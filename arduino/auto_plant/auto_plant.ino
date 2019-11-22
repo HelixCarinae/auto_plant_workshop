@@ -1,37 +1,38 @@
 /* \\==========================//
  * // Josh Watson              \\
  * \\ Automated Plant Workshop //
- * // UNB Makerspace           \\
+ * // UNB Makerspace Club      \\
  * \\==========================// */
 
-// Thinking it might be a good idea to create an array for 50 samples or so 
-// and then take the average of the samples and use that as our h2o val
-// Hopefully this might reduce noise and avoid spikes and bad readings 
 
 
-// ===== ===== Variables ===== ===== \\
+
+// ===== ===== CONSTANTS ===== ===== \\
+#define PUMP  2; // hooked up to transistor/mosfet
+
+#define HYGROMETER A0; // hygrometer
+
+#define LEDS_L 9;  // Left channel of LEDs
+#define LEDS_M 10; // Middle section of LEDs 
+#define LEDS_R 11; // Right section of LEDs
+
+#define SENSOR_PWR 2; // turns the sensor on/off when not in use to save power and avoid oxidization of the leads  
+
+#define h2o_goal 500; // this is how moist you want the soil to be for the plant
+
 
 void water();
 void light();
 
 
 const unsigned int t1m = 60000;
-//const unsigned short t1s = 6000; 
-
-uint8_t pump = 2; // hooked up to 2n2222a npn transistor
-uint8_t lights = 3; // 2n2222a npn transistor (driving 3 LEDs)
-uint8_t sensor_pwr = 3; // turns the sensor on/off when not in use to save power and avoid oxidization of the leads  
-uint8_t meter = A0; // hygrometer
 
 uint16_t h2o_readings[60] = {0};
-uint16_t h2o_goal = 500; // this is how moist you want the soil to be for the plant
 
 unsigned long pump_time = 0; // Time since the pump last turned on (to prevent it from turning on too often) 
 
 // Can use current time minus this to get the time it's been off
 unsigned long light_time = 0; // used to track how long the light has been on for
-
-
 unsigned long h24 = 8.64e7; // 24 h hours in ms 
 unsigned long day = 4.32e7; // duration for the light to be on in 12 h = 43200000 ms
 
@@ -42,11 +43,12 @@ bool debug = false;
 // ===== ===== Setup ===== ===== \\
 
 void setup() {
-  pinMode(pump, INPUT_PULLUP);
-  pinMode(lights, INPUT_PULLUP);
-  pinMode(pump, OUTPUT);
-  pinMode(lights, OUTPUT);
+  pinMode(PUMP, OUTPUT);
+  pinMode(LEDS_L, INPUT_PULLUP);
   pinMode(sensor_pwr, OUTPUT);
+  pinMode(LED_M, OUTPUT);
+  pinMode(LED_R, OUTPUT);
+  
   if(debug){Serial.begin(9600);}
 }
 
