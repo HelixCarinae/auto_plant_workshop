@@ -38,6 +38,21 @@ void loop() {
   delay(1000);
   digitalWrite(R_PIN, LOW);
   
+  digitalWrite(PUMP, HIGH);
   delay(1000);
+  digitalWrite(PUMP, LOW);
+
+
+  for(int i = 0 ; i < 3 ; i++){
+  digitalWrite(R_PIN, HIGH);
+  digitalWrite(M_PIN, HIGH);
+  digitalWrite(L_PIN, HIGH);
+  delay(255);
+  digitalWrite(R_PIN, LOW);
+  digitalWrite(M_PIN, LOW);
+  digitalWrite(L_PIN, LOW);
+  delay(255);
+  }
+  
 
 }
