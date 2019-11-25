@@ -7,7 +7,7 @@
 
 void setup() {
   // Seting up pins to used as outputs to turn on MOSFETS
-  pinMode(L_PIN, INTERNAL);
+  pinMode(L_PIN, OUTPUT);
   pinMode(M_PIN, OUTPUT);
   pinMode(R_PIN, OUTPUT);
   pinMode(PUMP, OUTPUT);
@@ -31,7 +31,7 @@ void loop() {
 
   
   digitalWrite(M_PIN, HIGH);
-   delay(1000);
+  delay(1000);
   digitalWrite(M_PIN, LOW);
   
   digitalWrite(R_PIN, HIGH);
@@ -39,7 +39,7 @@ void loop() {
   digitalWrite(R_PIN, LOW);
   
   digitalWrite(PUMP, HIGH);
-  delay(1000);
+  delay(5000);
   digitalWrite(PUMP, LOW);
 
 
