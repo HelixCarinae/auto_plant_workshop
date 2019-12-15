@@ -20,39 +20,47 @@ void loop() {
   
   // put your main code here, to run repeatedly:
   digitalWrite(SNSR_PWR, HIGH);
-  delay(20);
+  delay(0);
   Serial.println(analogRead(SNSR));
-  delay(20);
+  delay(0);
   digitalWrite(SNSR_PWR, LOW);
   
   digitalWrite(L_PIN, HIGH);
-  delay(1000);
+  delay(10);
   digitalWrite(L_PIN, LOW);
 
   
   digitalWrite(M_PIN, HIGH);
-  delay(1000);
+  delay(50);
   digitalWrite(M_PIN, LOW);
   
   digitalWrite(R_PIN, HIGH);
-  delay(1000);
+  delay(50);
   digitalWrite(R_PIN, LOW);
   
   digitalWrite(PUMP, HIGH);
-  delay(5000);
+  delay(0);
   digitalWrite(PUMP, LOW);
 
 
+
   for(int i = 0 ; i < 3 ; i++){
+      for(int j = 9 ; j <= 11 ; j++){
+        for(int k = 0 ; j < 3 ; k++){
+           digitalWrite(j, HIGH);
+           delay(420);
+           digitalWrite(j, LOW);
+            
+          } //k 
+      } // j
+  } // i
+  
   digitalWrite(R_PIN, HIGH);
   digitalWrite(M_PIN, HIGH);
   digitalWrite(L_PIN, HIGH);
-  delay(255);
+  delay(50);
   digitalWrite(R_PIN, LOW);
   digitalWrite(M_PIN, LOW);
   digitalWrite(L_PIN, LOW);
-  delay(255);
-  }
-  
-
+  delay(50);
 }

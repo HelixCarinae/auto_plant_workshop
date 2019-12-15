@@ -4,26 +4,24 @@
  * // UNB Makerspace Club      \\
  * \\==========================// */
 
-
-
-
 // ===== ===== CONSTANTS ===== ===== \\
-#define PUMP  2; // hooked up to transistor/mosfet
 
-#define HYGROMETER A0; // hygrometer
+#define PUMP 3 // hooked up to transistor/mosfet
 
-#define LEDS_L 9;  // Left channel of LEDs
-#define LEDS_M 10; // Middle section of LEDs 
-#define LEDS_R 11; // Right section of LEDs
+#define HYGROMETER A0 // hygrometer
 
-#define SENSOR_PWR 2; // turns the sensor on/off when not in use to save power and avoid oxidization of the leads  
+#define LED_L 9 
+#define LED_M 10 // Middle section of LEDs 
+#define LED_R 11 // Right section of LEDs
 
-#define h2o_goal 500; // this is how moist you want the soil to be for the plant
+#define SENSOR_PWR 2 // turns the sensor on/off when not in use to save power and avoid oxidization of the leads  
 
+int h2o_goal = 642; // this is how moist you want the soil to be for the plant
+
+bool debug = false;
 
 void water();
 void light();
-
 
 const unsigned int t1m = 60000;
 
@@ -38,14 +36,13 @@ unsigned long day = 4.32e7; // duration for the light to be on in 12 h = 4320000
 
 unsigned long previous_ms = millis();
 
-bool debug = false;
 
 // ===== ===== Setup ===== ===== \\
 
 void setup() {
   pinMode(PUMP, OUTPUT);
-  pinMode(LEDS_L, INPUT_PULLUP);
-  pinMode(sensor_pwr, OUTPUT);
+  pinMode(SENSOR_PWR, OUTPUT);
+  pinMode(LED_L, OUTPUT);
   pinMode(LED_M, OUTPUT);
   pinMode(LED_R, OUTPUT);
   
@@ -64,7 +61,7 @@ void loop() {
   
   // Takes a reading every 0.1 s over 6 seconds 
   for(int i = 0 ; i < 60 ; i++){
-    int reading = analogRead(meter);
+    int reading = analogRead(HYGROMETER);
     h2o_readings[i] = reading;
     h2o_val += reading;
     delay(100);
@@ -75,24 +72,25 @@ void loop() {
   // Light timing control 
     
   if( light_time < day ) // if it's daytime and we haven't hit our light goal then turn on lights
-      light(); 
+      light_on(); 
   
   else if( (light_time - previous_ms) >= h24 ) // new day
         light_time = 0;
   
   else{ // night time
-      digitalWrite(lights, LOW);
+      light_off();
       light_time = millis();
     }
     
   // Pump timing control
   // Checks if soil is wet enough and if it's been longer than 1 min since last watered 
+  
   if( h2o_val > h2o_goal){ // && (( millis() - pump_time) > t1m) ){
  
-      if( digitalRead(lights) ){  // if the lights are one turn them off before watering
-        digitalWrite(lights, LOW);
+      if( digitalRead(LED_L) ){  // if the lights are one turn them off before watering
+        light_off();
         water();
-        digitalWrite(lights, HIGH);
+        light_on();
       }
       else{ water(); }
     //  delay(10*t1m);
@@ -100,7 +98,7 @@ void loop() {
 
   if( (millis() - previous_ms) > h24 ) { previous_ms = millis(); } 
   
-  delay(60000); // wait for 1 minute before checking again
+  delay(600000); // wait for 10 minute before checking again
 
 } // loop()
 
@@ -110,18 +108,29 @@ void loop() {
 
 void water(){
   delay(100);
-  digitalWrite(pump, HIGH);
-  delay(3000); // pumps water for 5 seconds
+  digitalWrite(PUMP, HIGH);
+  delay(2000); // pumps water for 5 seconds
   //while(h2o_val < (h2o_goal - 24)){ // loops until the soil value raises to the desired level -24 to account for saturation time }
-  digitalWrite(pump, LOW);
+  digitalWrite(PUMP, LOW);
   delay(100);
   pump_time = millis();
 } 
 
 
-void light(){
-  delay(100);
-  digitalWrite(lights, HIGH);
+void light_on(){
+  delay(50);
+  digitalWrite(LED_L, HIGH);
+  digitalWrite(LED_M, HIGH);
+  digitalWrite(LED_R, HIGH);
   light_time = millis();
-  delay(100);
+  delay(50);
 } // light()
+
+
+void light_off(){
+  delay(50);
+  digitalWrite(LED_L, HIGH);
+  digitalWrite(LED_M, HIGH);
+  digitalWrite(LED_R, HIGH);
+  delay(50);
+}
