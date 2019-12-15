@@ -24,23 +24,27 @@
 
 
 ### Materials:
+##### Electronics
+Fabricated Boards:
 - 1 x Arduino Nano
-- 1 x 2n2222A NPN Transistor
-- 3 x 3 W LED grow lights
-- 3 x 100 ohm 1/4 W resistors
-- 1 x 1K ohm resistor
-- 1 x 10K ohm resistor
-- 1 x Small perfboard
-- 1 x 1/8" PVC tubing cut to length
-- 1 x Soil Hygrometer
-- 1 x AO3400 NPN MOSFET [Or possibly another 2n2222A]
+- 1 x LED Array PCB
+- 1 x Sisterboard 
+
+Components: 
+- 9 x 5730 (or other) SMD LEDs
+- 9 x 50 ohm 1/4 W resistors (can increase this number to decrease brightness)
+- 1 x Capacitive Soil Hygrometer
+- Cabling
+- 4 x 1K ohm resistor
+- 4 x 10K ohm resistor
+- 4 x AO3480 N-Trench MOSFET
+- 1 x SMA "M4" 1n1Diode
+- 
+
+
+-
+1 x 1/8" PVC tubing cut to length
 - 1 x 3D printed pot
 - 1 x 3D printed LED holder
-- 1 x 3D printed LED holder arm
-- 1 x Misc wire
-- 1 x ??? mF capacitor
-- 1 x ??? Diode
-- 1 x Mini USB cable to upload the code and power the Nano
-
 
 ### Building Instructions:
