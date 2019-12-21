@@ -16,7 +16,9 @@
 
 #define SENSOR_PWR 2 // turns the sensor on/off when not in use to save power and avoid oxidization of the leads  
 
+int WATER_TIME = 2000; // time that the pump is on
 int h2o_goal = 642; // this is how moist you want the soil to be for the plant
+int h2o_val = 1024;
 
 bool debug = false;
 
@@ -35,7 +37,7 @@ unsigned long h24 = 8.64e7; // 24 h hours in ms
 unsigned long day = 4.32e7; // duration for the light to be on in 12 h = 43200000 ms
 
 unsigned long previous_ms = millis();
-
+  
 
 // ===== ===== Setup ===== ===== \\
 
@@ -107,12 +109,17 @@ void loop() {
 // ===== ===== Functions ===== ===== \\
 
 void water(){
-  delay(100);
+  delay(50);
   digitalWrite(PUMP, HIGH);
-  delay(2000); // pumps water for 5 seconds
-  //while(h2o_val < (h2o_goal - 24)){ // loops until the soil value raises to the desired level -24 to account for saturation time }
+  delay(WATER_TIME); // pumps water for n seconds
+  
+  //while( analogRead(HYGROMETER) >= ( h2o_val - 100 ) ){
+    // loops until the soil value raises to the desired level -24 to account for saturation time }
+    //delay(100);
+    //if(debug){Serial.println(h2o_val);} }
+
   digitalWrite(PUMP, LOW);
-  delay(100);
+  delay(50);
   pump_time = millis();
 } 
 
